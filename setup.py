@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name="autobot",
     packages=["autobot"],
-    version="1.0.0",
+    version="1.0.1",
     description="Context Manager for ease of creating IRC bots",
     author="Wayne Simmerson",
     author_email="wsimmerson@gmail.com",
