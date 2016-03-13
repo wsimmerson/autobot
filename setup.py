@@ -7,7 +7,7 @@ setup(
     author="Wayne Simmerson",
     author_email="wsimmerson@gmail.com",
     url="https://github.com/wsimmerson/autobot",
-    download_url="https://github.com/wsimmerson/autobot/tarball/1.0.0",
+    download_url="https://github.com/wsimmerson/autobot/tarball/1.0.1",
     keywords=["irc", "bot"],
     classifiers=[
         "Programming Language :: Python",
