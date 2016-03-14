@@ -29,18 +29,37 @@ class Autobot():
         return self
 
     def __exit__(self, *args):
-        self.irc.send('/quit'.encode())
+        self.irc.shutdown(2)
+        self.irc.close()
 
     def read(self):
         self.buffer = self.irc.recv(1024).decode('utf-8')
-        if "PING" in self.buffer:
-            self.send("PONG")
-
         if self.log:
             with open(self.log, 'a') as f:
                 f.write(self.buffer)
 
-        return self.buffer
+        parts = self.buffer.split()
+        if len(parts) == 2:
+            msg = {
+                'full': self.buffer,
+                'source': parts[1],
+                'command': parts[0],
+                'nick': '',
+                'message': ''
+            }
+        else:
+            msg = {
+                'full': self.buffer,
+                'source': parts[0],
+                'command': parts[1],
+                'nick': parts[2],
+                'messsage': parts[3:len(parts)]
+            }
+
+        if msg['command'] == 'PING':
+            self.send("PONG")
+
+        return msg
 
     def send(self, msg):
         if self.log:
