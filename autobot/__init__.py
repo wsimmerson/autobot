@@ -53,7 +53,7 @@ class Autobot():
                 'source': parts[0],
                 'command': parts[1],
                 'nick': parts[2],
-                'messsage': parts[3:len(parts)]
+                'message': parts[3:len(parts)]
             }
 
         if msg['command'] == 'PING':
